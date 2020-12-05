@@ -1,3 +1,10 @@
+'''
+Set of passwords with a constraint.
+Ex: "1-2 x: xpxc" meaning that in the password "xpxc"
+must be at least one "x" and at most two "x" (out lower and upper bound in the code)
+
+Return the number of passwords in the file data.txt that are comply with its constraint 
+'''
 array = []
 ok = 0
 with open('data.txt', 'r') as f:
