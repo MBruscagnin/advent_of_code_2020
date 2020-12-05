@@ -1,48 +1,29 @@
-
-'''
-1) prendo la stringa e divido le parti divise da ":"
-2) mi salvo le due parti
-3) prendo la prima parte e divido il range con la lettera
-4)ciclo per |seconda parte|-volte confrontando la lettera con la seconda parte della stringa: 
-se lettera non c'è almeno lowerbound-volte esco, se supera le outerbound-volte esco, ok altrimenti.
-'''
-
-#ciclo per ogni stringa nel dataset
-
-txt = "1-2 c: ciao"
-x = txt.split(": ")
-pwd = x[1]
-y = x[0].split(' ')
-letter = y[1]
-range = y[0].split('-')
-lowerbound = int(range[0])
-upperbound = int(range[1])
-
-#almeno uno
-#print([1 if letter in pwd else 0 for chr in pwd])
-
-count = 0
+array = []
 ok = 0
-for chr in pwd:
-    if chr == letter:
-        count = count + 1
+with open('data.txt', 'r') as f:
+    for line in f.readlines():
+       # print(line)
+        l = line.strip().split('\n')
+        array.append(l)
 
-if count >= lowerbound:
-    if count <= upperbound:
-        ok = 1
-    else:
-        ok = -1
-else:
-    ok = -1
+for p in array:
+    z = p.pop()
+    x = z.split(':')
+    pwd = x[1]
+    y = x[0].split(' ')
+    letter = y[1]
+    range = y[0].split('-')
 
+    lowerbound = int(range[0])
+    upperbound = int(range[1])
+    count = 0
+    
+    for chr in pwd:
+        if chr == letter:
+            count = count + 1
+
+    if count >= lowerbound:
+        if count <= upperbound:
+            ok = ok + 1
 print(ok)
-'''
-print(txt)
-print()
-print(pwd)
-print()
-print(letter)
-print()
-print(lowerbound)
-print(upperbound)
-''''
+
